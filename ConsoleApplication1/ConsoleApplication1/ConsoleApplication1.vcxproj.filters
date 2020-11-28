@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\skill">
+      <UniqueIdentifier>{9858545b-1a0f-4012-a0f4-8c2ede14fda8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\hero">
+      <UniqueIdentifier>{7f96c3f7-1eea-4d98-b4a2-16ab10939add}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\skill">
+      <UniqueIdentifier>{71afe216-d58a-4fc8-83ac-a23ad73d1672}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\hero">
+      <UniqueIdentifier>{00f5b6a0-ca2f-460b-b133-eb6913875c88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\monster">
+      <UniqueIdentifier>{340d6f0c-494b-42d8-b336-4b95db0890b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\monster">
+      <UniqueIdentifier>{d4936090-b3df-41a1-921e-be8ad69305f6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="login.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="monster.cpp">
+      <Filter>源文件\monster</Filter>
+    </ClCompile>
+    <ClCompile Include="scaleph.cpp">
+      <Filter>源文件\monster</Filter>
+    </ClCompile>
+    <ClCompile Include="hero.cpp">
+      <Filter>源文件\hero</Filter>
+    </ClCompile>
+    <ClCompile Include="master.cpp">
+      <Filter>源文件\hero</Filter>
+    </ClCompile>
+    <ClCompile Include="soldier.cpp">
+      <Filter>源文件\hero</Filter>
+    </ClCompile>
+    <ClCompile Include="pastor.cpp">
+      <Filter>源文件\hero</Filter>
+    </ClCompile>
+    <ClCompile Include="scorchingSun.cpp">
+      <Filter>源文件\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="snowstorm.cpp">
+      <Filter>源文件\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="suddenAdvance.cpp">
+      <Filter>源文件\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="skill.cpp">
+      <Filter>源文件\skill</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="login.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="monster.h">
+      <Filter>头文件\monster</Filter>
+    </ClInclude>
+    <ClInclude Include="hero.h">
+      <Filter>头文件\hero</Filter>
+    </ClInclude>
+    <ClInclude Include="master.h">
+      <Filter>头文件\hero</Filter>
+    </ClInclude>
+    <ClInclude Include="skill.h">
+      <Filter>头文件\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="suddenAdvance.h">
+      <Filter>头文件\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="snowstorm.h">
+      <Filter>头文件\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="scorchingSun.h">
+      <Filter>头文件\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="pastor.h">
+      <Filter>头文件\hero</Filter>
+    </ClInclude>
+    <ClInclude Include="scaleph.h">
+      <Filter>头文件\monster</Filter>
+    </ClInclude>
+    <ClInclude Include="soldier.h">
+      <Filter>头文件\hero</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
