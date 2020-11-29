@@ -14,4 +14,5 @@
 #include "suddenAdvance.h"
 #include <windows.h>
 #include "color.h"
+#include "hud.h"
 using namespace std;

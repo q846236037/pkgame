@@ -31,12 +31,13 @@ void play() {
 
 
 void main() {
-	cout<<"À¶É«"<<endl;
-	color c;
-	c.setColor();
-	cout << "ºìÉ«" << endl;
-	c.getdefault();
 	cout << "lv" << endl;
+	hud h;
+	color c;
+	h.setcolor(&c);
+	h.drawBlood(3);
+	h.drawmp(3);
+	h.drawlevel(3);
 	play();
 	system("pause");
 }

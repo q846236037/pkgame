@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClCompile Include="color.cpp" />
     <ClCompile Include="hero.cpp" />
+    <ClCompile Include="hud.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="master.cpp" />
@@ -163,6 +164,7 @@
   <ItemGroup>
     <ClInclude Include="color.h" />
     <ClInclude Include="hero.h" />
+    <ClInclude Include="hud.h" />
     <ClInclude Include="login.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="master.h" />

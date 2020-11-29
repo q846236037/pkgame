@@ -14,10 +14,18 @@ color::~color()
 {
 }
 
-void color::setColor()
+void color::setColor(int i)
 {
 
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED); //红色
+	switch (i)
+	{
+	default:getdefault(); break;
+	case 1:SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_RED); break;
+	case 2:SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_BLUE); break;
+	case 3:SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_INTENSITY | BACKGROUND_RED | BACKGROUND_GREEN); break;
+	case 4:SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE); break;
+	}
+	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED); //红色
 
 	/*FOREGROUND_BLUE 前景色为蓝
 		FOREGROUND_GREEN 前景色为绿

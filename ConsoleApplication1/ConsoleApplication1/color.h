@@ -8,7 +8,7 @@ public:
 	HANDLE handle;
 	CONSOLE_SCREEN_BUFFER_INFO csbiInfo;
 	WORD wOldColorAttrs;
-	void setColor();
+	void setColor(int i = 0);
 	void getdefault();
 };
 

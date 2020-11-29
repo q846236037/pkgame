@@ -34,6 +34,15 @@
     <Filter Include="头文件\color">
       <UniqueIdentifier>{d1d4b465-499d-46d4-890e-5349900d068d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\color">
+      <UniqueIdentifier>{c904fad0-67a5-4d95-ba37-affa9664c501}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\hud">
+      <UniqueIdentifier>{0183ff53-8112-4ea3-9193-c25ccb4d5d0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Hud">
+      <UniqueIdentifier>{95354dc6-094b-40df-a287-7ed424f5077d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -73,7 +82,10 @@
       <Filter>源文件\skill</Filter>
     </ClCompile>
     <ClCompile Include="color.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\color</Filter>
+    </ClCompile>
+    <ClCompile Include="hud.cpp">
+      <Filter>源文件\Hud</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="color.h">
       <Filter>头文件\color</Filter>
+    </ClInclude>
+    <ClInclude Include="hud.h">
+      <Filter>头文件\hud</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
