@@ -31,6 +31,9 @@
     <Filter Include="源文件\monster">
       <UniqueIdentifier>{d4936090-b3df-41a1-921e-be8ad69305f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\color">
+      <UniqueIdentifier>{d1d4b465-499d-46d4-890e-5349900d068d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -69,6 +72,9 @@
     <ClCompile Include="skill.cpp">
       <Filter>源文件\skill</Filter>
     </ClCompile>
+    <ClCompile Include="color.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -106,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="soldier.h">
       <Filter>头文件\hero</Filter>
+    </ClInclude>
+    <ClInclude Include="color.h">
+      <Filter>头文件\color</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

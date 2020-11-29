@@ -29,8 +29,14 @@ void play() {
 
 }
 
-void main() {
 
+void main() {
+	cout<<"À¶É«"<<endl;
+	color c;
+	c.setColor();
+	cout << "ºìÉ«" << endl;
+	c.getdefault();
+	cout << "lv" << endl;
 	play();
 	system("pause");
 }

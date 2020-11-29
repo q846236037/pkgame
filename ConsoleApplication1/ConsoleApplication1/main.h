@@ -12,4 +12,6 @@
 #include "scorchingSun.h"
 #include "snowstorm.h"
 #include "suddenAdvance.h"
+#include <windows.h>
+#include "color.h"
 using namespace std;
