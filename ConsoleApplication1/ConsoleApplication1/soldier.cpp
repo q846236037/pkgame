@@ -16,6 +16,18 @@ soldier::soldier()
 	mon = NULL;
 }
 
+soldier::soldier(string name, int mp, int hp, int level, int max_level, int money, int hurt, int defense)
+{
+	this->name = name;
+	this->mp = mp;
+	this->hp = hp;
+	this->level = level;
+	this->max_level = max_level;
+	this->money = money;
+	this->hurt = hurt;
+	this->defense = defense;
+}
+
 
 soldier::~soldier()
 {

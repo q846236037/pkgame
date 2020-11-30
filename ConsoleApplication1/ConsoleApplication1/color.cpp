@@ -70,6 +70,7 @@ void color::setXY(int x, int y)
 {
 	COORD pos;
 	pos.X = x;
-	pos.Y = x;
+	pos.Y = y;
 	SetConsoleCursorPosition(handle, pos);
 }
+

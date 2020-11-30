@@ -34,6 +34,7 @@ void main() {
 	color c;
 	hud h;
 	login log;
+	log.setCo_hud(&c,&h);
 	h.setLogin(&log);
 	
 	h.setcolor(&c);
