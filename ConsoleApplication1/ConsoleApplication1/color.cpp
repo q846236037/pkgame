@@ -7,11 +7,12 @@ color::color()
 	handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	GetConsoleScreenBufferInfo(handle, &csbiInfo);
 	wOldColorAttrs = csbiInfo.wAttributes;
-}
 
+}
 
 color::~color()
 {
+
 }
 
 void color::setColor(int i)
@@ -24,6 +25,7 @@ void color::setColor(int i)
 	case 2:SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_BLUE); break;
 	case 3:SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_INTENSITY | BACKGROUND_RED | BACKGROUND_GREEN); break;
 	case 4:SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE); break;
+	case 5:SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED); break;
 	}
 	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED); //红色
 
@@ -62,4 +64,12 @@ void color::setColor(int i)
 void color::getdefault()
 {
 	SetConsoleTextAttribute(handle, wOldColorAttrs);//设置回初始定义的属性，即默认属性
+}
+
+void color::setXY(int x, int y)
+{
+	COORD pos;
+	pos.X = x;
+	pos.Y = x;
+	SetConsoleCursorPosition(handle, pos);
 }

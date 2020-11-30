@@ -1,6 +1,10 @@
 #pragma once
 #include "color.h"
 #include <iostream>
+#include <string>
+#include <conio.h>
+#include "windows.h"
+#include "login.h"
 using namespace std;
 class hud
 {
@@ -8,9 +12,25 @@ public:
 	hud();
 	~hud();
 	color *col;
-	void drawBlood(int num = 20);
-	void drawmp(int num = 20);
-	void drawlevel(int num = 20);
+	int MenuNum; //²Ëµ¥Êý×Ö
+	int MonsterNum;//¹ÖÊÞÊý×Ö
+	int LoginNum;//µÇÂ¼Êý×Ö
+	login *log;
+	void drawBlood(int num = 20);//»­ÑªÁ¿
+	void drawmp(int num = 20);//»­À¶Á¿
+	void drawlevel(int num = 20);//»­µÈ¼¶
 	void setcolor(color *col);
+	void drawMeun(); //»­²Ëµ¥
+	void Meun();//²Ëµ¥
+	void drawMonster();//»­¹ÖÊÞ
+	void selectMonster();//Ñ¡Ôñ¹ÖÊÞ
+	void drawLogin(); //»­µÇÂ¼Ò³Ãæ
+	void selectLogin(); //»­µÇÂ¼Ò³Ãæ
+	void EnterLogin();//µÇÂ¼»Ø³µ
+	void exitfn(); //ÍË³ö
+	void setLogin(login *log);//ÉèÖÃµÇÂ¼Àà
+	void LoginLoading();//µÇÂ¼
+	void drawtitle();//»­±êÌâ
+	void drawHero(int i=1); //»­Ó¢ÐÛ
 };
 

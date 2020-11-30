@@ -10,5 +10,6 @@ public:
 	WORD wOldColorAttrs;
 	void setColor(int i = 0);
 	void getdefault();
+	void setXY(int x, int y);
 };
 

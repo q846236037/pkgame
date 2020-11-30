@@ -31,13 +31,16 @@ void play() {
 
 
 void main() {
-	cout << "lv" << endl;
-	hud h;
 	color c;
+	hud h;
+	login log;
+	h.setLogin(&log);
+	
 	h.setcolor(&c);
-	h.drawBlood(3);
-	h.drawmp(3);
-	h.drawlevel(3);
-	play();
+	h.selectLogin();
+	//h.drawHero(3);
+	//h.selectMonster();
+	//h.Meun();
+	//play();
 	system("pause");
 }
