@@ -1,3 +1,17 @@
-﻿  hud.cpp
-  ConsoleApplication1.vcxproj -> E:\CppHomework\ConsoleApplication1\Debug\ConsoleApplication1.exe
-  ConsoleApplication1.vcxproj -> E:\CppHomework\ConsoleApplication1\Debug\ConsoleApplication1.pdb (Full PDB)
+﻿  suddenAdvance.cpp
+  soldier.cpp
+  snowstorm.cpp
+  skill.cpp
+  scorchingSun.cpp
+  scaleph.cpp
+  pastor.cpp
+  monster.cpp
+  master.cpp
+  main.cpp
+  login.cpp
+  hud.cpp
+  hero.cpp
+  color.cpp
+  正在生成代码...
+  ConsoleApplication1.vcxproj -> D:\CPPlesson\test\pkgame\ConsoleApplication1\Debug\ConsoleApplication1.exe
+  ConsoleApplication1.vcxproj -> D:\CPPlesson\test\pkgame\ConsoleApplication1\Debug\ConsoleApplication1.pdb (Full PDB)
