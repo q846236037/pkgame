@@ -7,5 +7,7 @@ public:
 	suddenAdvance();
 	~suddenAdvance();
 	virtual  void useingSkill() override;
+	virtual void studentSkill() override;
+	virtual void lookSkill() override;
 };
 

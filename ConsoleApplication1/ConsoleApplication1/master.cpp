@@ -14,6 +14,8 @@ master::master()
 	defense = 5;//·ÀÓù
 	skillname = NULL;
 	mon = NULL;
+	id = 1;
+	nowlevel = 0;
 }
 
 
@@ -21,7 +23,7 @@ master::~master()
 {
 }
 
-master::master(string name, int mp, int hp, int level, int max_level, int money, int hurt, int defense)
+master::master(string name, int mp, int hp, int level, int max_level, int money, int hurt, int defense,int id,int nowlevel)
 {
 	this->name = name;
 	this->mp = mp;
@@ -31,6 +33,8 @@ master::master(string name, int mp, int hp, int level, int max_level, int money,
 	this->money = money;
 	this->hurt = hurt;
 	this->defense = defense;
+	this->id = id;
+	this->nowlevel = nowlevel;
 }
 
 void master::setSkill(skill * name)
@@ -59,7 +63,6 @@ void master::attack()
 			cout << mon->name << "Ê£Óà" << mon->hp << "ÑªÁ¿" << endl;
 			mon->setPlayer(this);
 			mon->attack();
-			
 		}
 	}
 	

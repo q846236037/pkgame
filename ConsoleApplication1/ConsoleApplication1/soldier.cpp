@@ -14,9 +14,11 @@ soldier::soldier()
 	defense = 10;//·ÀÓù
 	skillname = NULL;
 	mon = NULL;
+	id = 0;
+	nowlevel = 0;
 }
 
-soldier::soldier(string name, int mp, int hp, int level, int max_level, int money, int hurt, int defense)
+soldier::soldier(string name, int mp, int hp, int level, int max_level, int money, int hurt, int defense, int id, int nowlevel)
 {
 	this->name = name;
 	this->mp = mp;
@@ -26,6 +28,8 @@ soldier::soldier(string name, int mp, int hp, int level, int max_level, int mone
 	this->money = money;
 	this->hurt = hurt;
 	this->defense = defense;
+	this->id = id;
+	this->nowlevel = nowlevel;
 }
 
 

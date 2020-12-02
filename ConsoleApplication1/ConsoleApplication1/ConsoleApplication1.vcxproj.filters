@@ -43,6 +43,12 @@
     <Filter Include="源文件\Hud">
       <UniqueIdentifier>{95354dc6-094b-40df-a287-7ed424f5077d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\stage">
+      <UniqueIdentifier>{23f34cd5-7045-4574-bdda-440018d28a87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\stage">
+      <UniqueIdentifier>{bbc3e9df-0bb5-4c9e-96e5-bfb74f208c20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -87,6 +93,18 @@
     <ClCompile Include="hud.cpp">
       <Filter>源文件\Hud</Filter>
     </ClCompile>
+    <ClCompile Include="stage.cpp">
+      <Filter>源文件\stage</Filter>
+    </ClCompile>
+    <ClCompile Include="quickmedicine.cpp">
+      <Filter>源文件\stage</Filter>
+    </ClCompile>
+    <ClCompile Include="bluemedicine.cpp">
+      <Filter>源文件\stage</Filter>
+    </ClCompile>
+    <ClCompile Include="redmedicine.cpp">
+      <Filter>源文件\stage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -130,6 +148,18 @@
     </ClInclude>
     <ClInclude Include="hud.h">
       <Filter>头文件\hud</Filter>
+    </ClInclude>
+    <ClInclude Include="stage.h">
+      <Filter>头文件\stage</Filter>
+    </ClInclude>
+    <ClInclude Include="redmedicine.h">
+      <Filter>头文件\stage</Filter>
+    </ClInclude>
+    <ClInclude Include="bluemedicine.h">
+      <Filter>头文件\stage</Filter>
+    </ClInclude>
+    <ClInclude Include="quickmedicine.h">
+      <Filter>头文件\stage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

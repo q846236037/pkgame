@@ -13,7 +13,7 @@ public:
 		int max_level,//升级所需经验
 		int money,//金钱
 		int hurt,//伤害
-		int defense);//防御
+		int defense,int id, int nowlevel);//防御
 	virtual  void setSkill(skill *name) override;
 	virtual  void setMonster(monster  *mon) override;
 	virtual void attack() override;

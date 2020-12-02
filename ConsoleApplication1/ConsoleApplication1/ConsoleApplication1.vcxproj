@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bluemedicine.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="hero.cpp" />
     <ClCompile Include="hud.cpp" />
@@ -154,14 +155,18 @@
     <ClCompile Include="master.cpp" />
     <ClCompile Include="monster.cpp" />
     <ClCompile Include="pastor.cpp" />
+    <ClCompile Include="quickmedicine.cpp" />
+    <ClCompile Include="redmedicine.cpp" />
     <ClCompile Include="scaleph.cpp" />
     <ClCompile Include="scorchingSun.cpp" />
     <ClCompile Include="skill.cpp" />
     <ClCompile Include="snowstorm.cpp" />
     <ClCompile Include="soldier.cpp" />
+    <ClCompile Include="stage.cpp" />
     <ClCompile Include="suddenAdvance.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bluemedicine.h" />
     <ClInclude Include="color.h" />
     <ClInclude Include="hero.h" />
     <ClInclude Include="hud.h" />
@@ -170,11 +175,14 @@
     <ClInclude Include="master.h" />
     <ClInclude Include="monster.h" />
     <ClInclude Include="pastor.h" />
+    <ClInclude Include="quickmedicine.h" />
+    <ClInclude Include="redmedicine.h" />
     <ClInclude Include="scaleph.h" />
     <ClInclude Include="scorchingSun.h" />
     <ClInclude Include="skill.h" />
     <ClInclude Include="snowstorm.h" />
     <ClInclude Include="soldier.h" />
+    <ClInclude Include="stage.h" />
     <ClInclude Include="suddenAdvance.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

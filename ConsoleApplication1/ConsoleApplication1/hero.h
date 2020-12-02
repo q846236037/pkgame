@@ -17,6 +17,8 @@ public:
 	int money;//金钱
 	int hurt;//伤害
 	int defense; //防御
+	int id;//
+	int nowlevel;//当前经验
 	skill*skillname;
 	monster*mon;
 	virtual  void setSkill(skill *name) = 0;

@@ -14,6 +14,8 @@ pastor::pastor()
 	defense = 5;//·ÀÓù
 	skillname = NULL;
 	mon = NULL;
+	id = 2;
+	nowlevel = 0;
 }
 
 
@@ -21,7 +23,7 @@ pastor::~pastor()
 {
 }
 
-pastor::pastor(string name, int mp, int hp, int level, int max_level, int money, int hurt, int defense)
+pastor::pastor(string name, int mp, int hp, int level, int max_level, int money, int hurt, int defense, int id,int nowlevel)
 {
 	this->name = name;
 	this->mp = mp;
@@ -31,6 +33,8 @@ pastor::pastor(string name, int mp, int hp, int level, int max_level, int money,
 	this->money = money;
 	this->hurt = hurt;
 	this->defense = defense;
+	this->id = id;
+	this->nowlevel = nowlevel;
 }
 
 void pastor::setSkill(skill * name)
