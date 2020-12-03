@@ -1,7 +1,14 @@
-﻿  hud.cpp
+﻿  suddenAdvance.cpp
 d:\cpplesson\consoleapplication1\consoleapplication1\hud.h(18): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
 d:\cpplesson\consoleapplication1\consoleapplication1\hud.h(19): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
 d:\cpplesson\consoleapplication1\consoleapplication1\hud.h(20): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
 d:\cpplesson\consoleapplication1\consoleapplication1\hud.h(21): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+  master.cpp
+  hud.cpp
+d:\cpplesson\consoleapplication1\consoleapplication1\hud.h(18): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+d:\cpplesson\consoleapplication1\consoleapplication1\hud.h(19): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+d:\cpplesson\consoleapplication1\consoleapplication1\hud.h(20): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+d:\cpplesson\consoleapplication1\consoleapplication1\hud.h(21): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+  正在生成代码...
   ConsoleApplication1.vcxproj -> D:\CPPlesson\ConsoleApplication1\Debug\ConsoleApplication1.exe
   ConsoleApplication1.vcxproj -> D:\CPPlesson\ConsoleApplication1\Debug\ConsoleApplication1.pdb (Full PDB)

@@ -223,6 +223,12 @@ void hud::drawMonster(int x, int y,int num, int state)
 		col->setColor(5);
 		console({ MonsterNum == 0 ? "      ↓" : ""}); col->setXY(x, y++);
 		col->setColor(0);
+		if (mon1 != NULL&&mon1->state == 1) {
+			col->setColor(8);
+		}
+		if (mon1 != NULL&&mon1->state == 2) {
+			col->setColor(9);
+		}
 		if (MonsterNum == 0)
 		{
 			col->setColor(5);
@@ -239,13 +245,16 @@ void hud::drawMonster(int x, int y,int num, int state)
 		col->setColor();
 	}
 	else if(num ==2){
-		if (state == 1) {
-			col->setColor(5);
-		}
 		col->setXY(x, y++);
 		col->setColor(5);
 		console({ MonsterNum == 1 ? "        ↓" : "" }); col->setXY(x, y++);
 		col->setColor(0);
+		if (mon2 != NULL&&mon2->state == 1) {
+			col->setColor(8);
+		}
+		if (mon1 != NULL&&mon1->state == 2) {
+			col->setColor(9);
+		}
 		if (MonsterNum ==1)
 		{
 			col->setColor(5);
@@ -253,6 +262,7 @@ void hud::drawMonster(int x, int y,int num, int state)
 		if (state == 1) {
 			col->setColor(5);
 		}
+	
 		console({ "      ■■■" }); col->setXY(x, y++);
 		console({"    ■■■■■" }); col->setXY(x, y++);
 		console({"  ■■  ■  ■■" }); col->setXY(x, y++);
@@ -270,7 +280,9 @@ void hud::selectMonster()
 	MonsterNum = 0;
 	drawpk();
 	int ch = 0;
-	while (1)
+	if (mon1->hp>0&&mon2->hp>0)
+	{
+		while (1)
 	{
 		if (_kbhit()) {
 			ch = _getch();
@@ -289,6 +301,15 @@ void hud::selectMonster()
 			}
 
 		}
+	}
+	}
+	else if (mon1->hp > 0 && mon2->hp <= 0) {
+		MonsterNum = 0;
+		enterselectpk();
+	}
+	else if (mon2->hp > 0 && mon1->hp <= 0) {
+		MonsterNum = 1;
+		enterselectpk();
 	}
 }
 
@@ -519,37 +540,37 @@ void hud::moveSelectHero()
 void hud::enterMoveSelectHero()
 {
 	this->her = NULL;
-	ifstream ifs;
+	ifstream  ifs;
 	int title = gerHeroNumber();
 	if (title>0) {
 		ifs.open("hero.txt", ios::in);
-		int num = 0;
+		
 		t_her = new hero *[title];
-		int i = 0;
-		string name;//名字
-		int mp;// 法力值上限
+		string name; //名字
+		int mp; // 法力值上限
 		int hp;//血量上限
 		int  level;//级别
 		int max_level;//升级所需经验
 		int money;//金钱
 		int hurt;//伤害
-		int defense;//防御
-		int id;
+		int defense; //防御
+		int id;//id;
 		int nowlevel;
-		while (ifs >> name >> mp >> hp >> level >> max_level >> money >> hurt >> defense>>id>>nowlevel);
+		int num = 0;
+		while (ifs >> name&&ifs >> mp&&ifs >> hp&&ifs >> level&&ifs >> max_level&&ifs >> money&&ifs >> hurt&&ifs >> defense&&ifs >> id&&ifs >> nowlevel)
 		{
-
 			if (id == 0)
 			{
-				t_her[i] = new soldier(name, mp, hp, level, max_level, money, hurt, defense,id, nowlevel);
+				t_her[num] = new soldier(name, mp, hp, level, max_level, money, hurt, defense, id, nowlevel);
 			}
 			else if (id == 1) {
-				t_her[i] = new master(name,mp,hp,level,max_level,money,hurt,defense, id,nowlevel);
+				t_her[num] = new master(name, mp, hp, level, max_level, money, hurt, defense, id, nowlevel);
 			}
 			else if (id == 2) {
-				t_her[i] = new pastor(name, mp, hp, level, max_level, money, hurt, defense, id,nowlevel);
+				t_her[num] = new pastor(name, mp, hp, level, max_level, money, hurt, defense, id, nowlevel);
 			}
-			i++;
+			num++;
+			
 		}
 		ifs.close();
 		for (int i = 0;i<title;i++)
@@ -569,7 +590,7 @@ void hud::enterMoveSelectHero()
 	else if (heroNum == 2) {
 		this->her = new pastor;
 	}
-	ofstream ofs;
+		ofstream ofs;
 	ofs.open("hero.txt", ios::app);
 	string name;//名字
 	col->setXY(x, y++);
@@ -588,10 +609,9 @@ void hud::enterMoveSelectHero()
 	her->name = name;
 	ofs<< her->name <<" "<<her->mp <<" "<<her->hp << " " <<her->level << " " <<her->max_level << " " <<her->money << " " <<her->hurt << " " <<her->defense<<" "<<her->id<<" "<< her->nowlevel<<endl;
 	ofs.close();
-	ofstream;
 	ifs.open("hero.txt", ios::in);
 	t_her = new hero *[title];
-	while (ifs >> name >> mp >> hp >> level >> max_level >> money >> hurt >> defense >> id>> nowlevel);
+	while (ifs >> name&&ifs >> mp&&ifs >> hp&&ifs >> level&&ifs >> max_level&&ifs >> money&&ifs >> hurt&&ifs >> defense&&ifs >> id&&ifs >> nowlevel);
 	{
 
 		if (id == 0)
@@ -634,7 +654,8 @@ int hud::gerHeroNumber()
 		int hurt;//伤害
 		int defense; //防御
 		int id;//id;
-		while (ifs >> name >> mp>> hp>> level>> max_level>> money>> hurt>> defense>>id)
+		int nowlevel;
+		while (ifs >> name&&ifs >> mp&&ifs >> hp&&ifs >> level&&ifs >> max_level&&ifs >> money&&ifs >> hurt&&ifs >> defense&&ifs >>id&&ifs >> nowlevel)
 		{
 			num++;
 		}
@@ -646,6 +667,7 @@ int hud::gerHeroNumber()
 		ifs.close();
 		return 0;
 	}
+	return 0;
 }
 
 //画开始界面
@@ -1003,14 +1025,20 @@ void hud::enterstage()
 {
 	if (stageNum ==0)
 	{
+
 		stage *sta = new bluemedicine;
 		sta->sethero(her);
 		sta->setcolor(col);
 		sta->setHud(this);
 		sta->use();
 		saveHero();
-		Sleep(3000);
-		selectstage();
+		Sleep(2000);
+		if (is_start) {
+			MonsterNum = -1;
+			enterselectpk();
+		}else{
+			selectstage();
+		}
 	}
 	else if (stageNum == 1) {
 		stage *sta = new redmedicine;
@@ -1019,8 +1047,14 @@ void hud::enterstage()
 		sta->setHud(this);
 		sta->use();
 		saveHero();
-		Sleep(3000);
-		selectstage();
+		Sleep(2000);
+		if (is_start) {
+			MonsterNum = -1;
+			enterselectpk();
+		}
+		else {
+			selectstage();
+		}
 	}
 	else if (stageNum == 2) {
 		stage *sta = new quickmedicine;
@@ -1029,8 +1063,14 @@ void hud::enterstage()
 		sta->setHud(this);
 		sta->use();
 		saveHero();
-		Sleep(3000);
-		selectstage();
+		Sleep(2000);
+		if (is_start) {
+			MonsterNum = -1;
+			enterselectpk();
+		}
+		else {
+			selectstage();
+		}
 	}
 	else if (stageNum == 3) {
 		if (is_start) {
@@ -1065,6 +1105,7 @@ void hud::drawskill()
 	else {
 		col->setColor();
 	}
+	sk->sethero(her);
 	int num = sk->getIsStudent(sk->id);
 	console({ skillNum == 0 ? "→" : "" ,sk->name,"等级",to_string(sk->level),"可学习",num>0?"已学会":"未学会"});
 	col->setColor();
@@ -1074,6 +1115,7 @@ void hud::drawskill()
 	}
 	sk = new scorchingSun;
 	col->setXY(x, y++);
+	sk->sethero(her);
 	num = sk->getIsStudent(sk->id);
 	console({ skillNum == 1 ? "→" : "" ,sk->name,"等级",to_string(sk->level),"可学习",num>0 ? "已学会" : "未学会" });
 	col->setColor();
@@ -1083,6 +1125,7 @@ void hud::drawskill()
 		col->setColor(5);
 	}
 	col->setXY(x, y++);
+	sk->sethero(her);
 	num = sk->getIsStudent(sk->id);
 	console({ skillNum == 2 ? "→" : "",sk->name,"等级",to_string(sk->level),"可学习",num>0 ? "已学会" : "未学会" });
 	col->setColor();
@@ -1180,12 +1223,18 @@ void hud::drawpk(int state )
 	else if (state == 1) {
 		drawHero(heroNum, 2, 6,1);
 	}
+	if (mon1->hp>0)
+	{
+		drawMonster(45, 10, 1);
+		drawBlood(45, 1, mon1->hp / 10, "乌贼");
+	}
+	if (mon2->hp>0)
+	{
+		drawMonster(60, 10, 2);
+		drawBlood(45, 3, mon2->hp / 10, "章鱼");
+	}
 	
-	drawMonster(45,10,1);
-	drawMonster(60, 10, 2);
 	drawBlood(2, 1,her->hp/10);
-	drawBlood(45, 1, mon1->hp / 10,"乌贼");
-	drawBlood(45, 3, mon2->hp / 10,"章鱼");
 	drawmp(2, 3,her->mp/10);
 	drawlevel(2, 5,(int)(her->nowlevel/10));
 	col->setXY(x=0, y++);
@@ -1229,15 +1278,58 @@ void hud::drawpk(int state )
 	}
 	else if (is_anm == 1) {
 		col->setXY(x = 30, y++);
-		console("我方发起了攻击");
+		console({ "我方发起了攻击造成了",to_string(her->hurt-mon1->defense),"伤害" });
 	}
 	else if (is_anm == 2) {
 		col->setXY(x = 30, y++);
-		console({ "乌贼发起了攻击" });
+		console({ "乌贼发起了攻击造成了",to_string(mon2->hurt - her->defense),"伤害" });
 	}
 	else if (is_anm == 3) {
 		col->setXY(x = 30, y++);
-		console({ "章鱼发起了攻击" });
+		console({ "章鱼发起了攻击造成了",to_string(mon2->hurt-her->defense),"伤害" });
+	}
+	else if (is_anm == 4) {
+		col->setXY(x = 20, y++);
+		console({ "战斗胜利获得",to_string(mon1->level+mon2->level),"经验"});
+		col->setXY(x = 20, y++);
+		console({ "获得",to_string(mon1->money + mon2->money),"金钱" });
+	}
+	else if (is_anm == 5) {
+		col->setXY(x = 20, y++);
+		console({ "恭喜升级当前等级",to_string(her->level),"快去学习新技能吧" });
+	}
+	else if (is_anm == 6) {
+		col->setXY(x = 20, y++);
+		console({ "怪物们都被冻结无法攻击"});
+	}
+	else if (is_anm == 7) {
+		col->setXY(x = 20, y++);
+		console({ "怪物们都被灼烧，持续掉血三回合，概率因麻痹不能攻击" });
+	}
+	else if (is_anm == 8) {
+		col->setXY(x = 20, y++);
+		skill *sk = new scorchingSun;
+		console({ "乌贼因为灼烧效果，损失",to_string(sk->hurt),"血量" });
+		
+	}
+	else if (is_anm == 9) {
+		col->setXY(x = 20, y++);
+		skill *sk = new scorchingSun;
+		console({ "章鱼因为灼烧效果，损失",to_string(sk->hurt),"血量" });
+	}
+	else if (is_anm == 10) {
+		col->setXY(x = 20, y++);
+		skill *sk = new scorchingSun;
+		console({ "乌贼因为灼烧效果，损失",to_string(sk->hurt),"血量" });
+		col->setXY(x = 20, y++);
+		console({ "乌贼因为麻痹效果，无法攻击" });
+	}
+	else if (is_anm == 11) {
+		col->setXY(x = 20, y++);
+		skill *sk = new scorchingSun;
+		console({ "章鱼因为灼烧效果，损失",to_string(sk->hurt),"血量" });
+		col->setXY(x = 20, y++);
+		console({ "章鱼因为灼烧效果，无法攻击" });
 	}
 	console("————————————————————————————————————————");
 }
@@ -1302,11 +1394,13 @@ void hud::enterPk()
 		selectstage();
 	}
 	else if (pkNum == 3) {
+		is_start = false;
+		makemon = 0;
 		selectstart();
 	}
 }
 
-//画pk界面
+//画pk界面技能
 void hud::drawPkSkill()
 {
 	skill *sk;
@@ -1329,8 +1423,9 @@ void hud::drawPkSkill()
 	else {
 		col->setColor();
 	}
+	sk->sethero(her);
 	int num = sk->getIsStudent(sk->id);
-	console({ pkskilNum == 0 ? "→" : "" ,sk->name,"消耗",to_string(sk->mp),"蓝量",num > 0?"":"未学习"});
+	console({ pkskilNum == 0 ? "→" : "" ,sk->name,"消耗",to_string(sk->mp*2),"蓝量",num > 0?"":"未学习"});
 	col->setColor();
 	if (pkskilNum == 1)
 	{
@@ -1338,8 +1433,9 @@ void hud::drawPkSkill()
 	}
 	sk = new scorchingSun;
 	col->setXY(x, y++);
+	sk->sethero(her);
 	num = sk->getIsStudent(sk->id);
-	console({ pkskilNum == 1 ? "→" : "" ,sk->name,"消耗",to_string(sk->mp),"蓝量",num > 0 ? "" : "未学习" });
+	console({ pkskilNum == 1 ? "→" : "" ,sk->name,"消耗",to_string(sk->mp * 2),"蓝量",num > 0 ? "" : "未学习" });
 	col->setColor();
 	sk = new suddenAdvance;
 	if (pkskilNum == 2)
@@ -1347,6 +1443,7 @@ void hud::drawPkSkill()
 		col->setColor(5);
 	}
 	col->setXY(x, y++);
+	sk->sethero(her);
 	num = sk->getIsStudent(sk->id);
 	console({ pkskilNum == 2 ? "→" : "",sk->name,"消耗",to_string(sk->level),"蓝量",num > 0 ? "" : "未学习" });
 	col->setColor();
@@ -1390,13 +1487,48 @@ void hud::selectpkSkill()
 void hud::enterSelectPkskill()
 {
 	if (pkskilNum == 0) {
-		
+		mon1->num--;
+		mon2->num--;
+		skill *sk = new snowstorm;
+		sk->setcolor(col);
+		sk->sethero(her);
+		sk->sethud(this);
+		sk->setmon(mon1);
+		sk->useingSkill();
+		sk->setmon(mon2);
+		sk->useingSkill();
+		MonsterNum = -1;
+		Sleep(1000);
+		enterselectpk();
 	}
 	else if (pkskilNum == 1) {
-
+		mon1->num--;
+		mon2->num--;
+		skill *sk = new scorchingSun;
+		sk->setcolor(col);
+		sk->sethero(her);
+		sk->sethud(this);
+		sk->setmon(mon1);
+		sk->useingSkill();
+		sk->setmon(mon2);
+		sk->useingSkill();
+		MonsterNum = -1;
+		Sleep(1000);
+		enterselectpk();
 	}
 	else if (pkskilNum == 2) {
+		mon1->num--;
+		mon2->num--;
+		skill *sk = new suddenAdvance;
+		sk->setcolor(col);
+		sk->sethero(her);
+		sk->sethud(this);
+		selectMonster();
 
+		/*sk->setmon(mon1);
+		sk->useingSkill();
+		Sleep(1000);
+		enterselectpk();*/
 	}
 	else if (pkskilNum == 3) {
 		selectPkNum();
@@ -1616,63 +1748,220 @@ void hud::enterselectpk()
 {
 	is_anm = 1;
 	if (MonsterNum == 0)
-	{
-		MonsterNum = -1;
-		drawpk();
-	   drawcube(33,14);
-	   drawMonster(45, 10, 1,1);
-	   Sleep(300);
-	   drawMonster(45, 10, 1);
-	   Sleep(300);
-	   drawMonster(45, 10, 1, 1);
-	   Sleep(300);
-	   drawMonster(45, 10, 1);
-	   cout << endl;
-	   cout << endl;
-	   mon1->hp -= her->hurt - mon1->defense;
+	{   
+			MonsterNum = -1;
+			drawpk();
+		   drawcube(33,14);
+	   
+		   drawMonster(45, 10, 1,1);
+		   Sleep(300);
+	  
+		   drawMonster(45, 10, 1);
+		   Sleep(300);
+	
+		   drawMonster(45, 10, 1, 1);
+		   Sleep(300);
+	 
+		   drawMonster(45, 10, 1);
+		   int hurt;
+		   hurt = her->hurt - mon1->defense;
+		   mon1->hp -= hurt;
+		   drawpk();
+	
+		
 	}
-	else if (MonsterNum == 1) {
-		MonsterNum = -1;
-		drawpk();
-		drawcube(33, 9,false);
-		drawMonster(60, 10, 2,1);
-		Sleep(300);
-		drawMonster(60, 10, 2);
-		Sleep(300);
-		drawMonster(60, 10, 2, 1);
-		Sleep(300);
-		drawMonster(60, 10, 2);
-		mon2->hp -= her->hurt - mon2->defense;
+	 if (MonsterNum == 1) {
+		 
+			MonsterNum = -1;
+			drawpk();
+			drawcube(33, 9,false);
+			drawMonster(60, 10, 2,1);
+			Sleep(300);
+		
+			drawMonster(60, 10, 2);
+			Sleep(300);
+	
+			drawMonster(60, 10, 2, 1);
+			Sleep(300);
+		
+			drawMonster(60, 10, 2);
+			/*her->setMonster(mon2);
+			her->attack();*/
+			int hurt;
+			hurt = her->hurt - mon2->defense;
+			mon2->hp -= hurt;
+			drawpk();
+		
 	}
 	
-	drawpk();
+	if (mon1->num<=0)
+	{
+	
+		if (her->hp > 0 && mon1->hp > 0) {
+		Sleep(2000);
+		is_anm = 2;
+		drawpk();
+		Sleep(300);
+		drawpk(1);
+		Sleep(300);
+		drawpk();
+		Sleep(300);
+		drawpk(1);
+		Sleep(300);
+		mon1->setPlayer(her);
+		mon1->attack();
+		drawpk();
+	}
+	}
 
-	Sleep(2000);
-	is_anm = 2;
-	drawpk();
-	Sleep(300);
-	drawpk(1);
-	Sleep(300);
-	drawpk();
-	Sleep(300);
-	drawpk(1);
-	Sleep(300);
-	her->hp -= mon1->hurt - her->defense;
-	drawpk();
+	if (mon2->num <= 0)
+	{
+		if (her->hp > 0 && mon2->hp > 0) {
+		Sleep(2000);
+		is_anm = 3;
+		drawpk();
+		Sleep(300);
+		drawpk(1);
+		Sleep(300);
+		drawpk();
+		Sleep(300);
+		drawpk(1);
+		Sleep(300);
+		mon2->setPlayer(her);
+		mon2->attack();
+		is_anm = 0;
+		selectPkNum();
+	}
+	}
 
-	Sleep(2000);
-	is_anm = 3;
-	drawpk();
-	Sleep(300);
-	drawpk(1);
-	Sleep(300);
-	drawpk();
-	Sleep(300);
-	drawpk(1);
-	Sleep(300);
-	her->hp -= mon2->hurt - her->defense;
-	is_anm = 0;
-	selectPkNum();
+	if (mon1->num > 0 && mon2->num > 0) {
+		if (mon1->state == 1 && mon2->state == 1)
+		{
+			is_anm = 6;
+			drawpk();
+			mon1->num--;
+			mon2->num--;
+			if (mon1->num == 0)
+			{
+				mon1->state = 0;
+			}
+			if (mon2->num == 0)
+			{
+				mon2->state = 0;
+			}
+			Sleep(2000);
+			is_anm = 0;
+			selectPkNum();
+		}
+		else if (mon1->state == 2 && mon2->state == 2) {
+			is_anm = 1;
+			drawpk();
+			Sleep(1000);
+			is_anm = 7;
+			drawpk();
+			bool mon1bo = mon1->isstart();
+			Sleep(1000);
+			
+			if (mon1bo) {
+				is_anm = 10;
+				skill* sk = new scorchingSun;
+				mon1->hp -= sk->hurt;
+				drawpk();
+				Sleep(1000);
+			}
+			else {
+				is_anm = 8;
+				skill* sk = new scorchingSun;
+				mon1->hp -= sk->hurt;
+				drawpk();
+				Sleep(1000);
+				if (her->hp > 0 && mon1->hp > 0) {
+					is_anm = 2;
+					drawpk();
+					Sleep(300);
+					drawpk(1);
+					Sleep(300);
+					drawpk();
+					Sleep(300);
+					drawpk(1);
+					Sleep(300);
+					mon1->setPlayer(her);
+					mon1->attack();
+					drawpk();
+				}
+			}
+			Sleep(1000);
+			bool mon2bo = mon2->isstart();
+			if (mon2bo) {
+				is_anm = 11;
+				skill* sk = new scorchingSun;
+				mon2->hp -= sk->hurt;
+				drawpk();
+				Sleep(2000);
+			}
+			else {
+				is_anm = 9;
+				skill* sk = new scorchingSun;
+				drawpk();
+				Sleep(2000);
+				mon2->hp -= sk->hurt;
+				if (her->hp > 0 && mon2->hp > 0) {
+					Sleep(2000);
+					is_anm = 3;
+					drawpk();
+					Sleep(300);
+					drawpk(1);
+					Sleep(300);
+					drawpk();
+					Sleep(300);
+					drawpk(1);
+					Sleep(300);
+					mon2->setPlayer(her);
+					mon2->attack();
+					
+				}
+			};
+			mon1->num--;
+			mon2->num--;
+			if (mon1->num == 0)
+			{
+				mon1->state = 0;
+			}
+			if (mon2->num == 0)
+			{
+				mon2->state = 0;
+			}
+
+			is_anm = 0;
+			selectPkNum();
+			
+		}
+
+	}
+
+	if (her->hp > 0 && mon1->hp <= 0 && mon2->hp <=0) {
+		is_anm = 4;
+		her->nowlevel += mon1->level;
+		her->nowlevel += mon2->level;
+		her->money += mon1->money;
+		her->money += mon2->money;
+		drawpk();
+		if (her->nowlevel >= her->max_level) {
+			
+			her->nowlevel -= her->max_level;
+			her->max_level *= her->level;
+			her->level++;
+			is_anm = 5;
+			Sleep(3000);
+			drawpk();
+		}
+		this->saveHero();
+		is_anm = 0;
+		makemon = 0;
+		is_start = false;
+		Sleep(3000);
+		selectstart();
+	}
 }
 
 

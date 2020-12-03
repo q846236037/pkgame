@@ -1,5 +1,6 @@
 #pragma once
 #include "skill.h"
+#include "monster.h"
 class scorchingSun :
 	public skill
 {

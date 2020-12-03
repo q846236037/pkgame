@@ -1,6 +1,6 @@
 #include "snowstorm.h"
 #include "hero.h"
-
+#include "hud.h"
 
 
 
@@ -8,12 +8,13 @@ snowstorm::snowstorm()
 {
    name = "暴风雪"; //名字
 	hurt = 20; //伤害
-	mp = 50; // mp
+	mp = 25; // mp
 	cold = true;//寒冷
 	aoe = true;//是否范围伤害
 	id = 0;
 	hid = 1;
 	level = 1;
+	mon = NULL;
 }
 
 
@@ -23,6 +24,36 @@ snowstorm::~snowstorm()
 
 void snowstorm::useingSkill()
 {
+	int num = getIsStudent(id);
+	if (num>0)
+	{
+		if (her->mp >= mp) {
+			her->setMonster(mon);
+			her->setSkill(this);
+			her->attack();
+		}
+		else {
+			col->setXY(28, 11);
+			cout << "——————————————" << endl;
+			col->setXY(28, 12);
+			cout << "|  使用失败,原因：蓝量不足" << "  |" << endl;
+			col->setXY(28, 13);
+			cout << "——————————————" << endl;
+			Sleep(1000);
+			hu->selectpkSkill();
+		}
+	}
+	else {
+		col->setXY(28, 11);
+		cout << "——————————————" << endl;
+		col->setXY(28, 12);
+		cout << "|  使用失败,原因：未拥有技能" << "  |" << endl;
+		col->setXY(28, 13);
+		cout << "——————————————" << endl;
+		Sleep(1000);
+		hu->selectpkSkill();
+	}
+	
 }
 
 void snowstorm::studentSkill()
@@ -38,6 +69,7 @@ void snowstorm::studentSkill()
 			cout << "|已经学会, 不需要在重新学习" << "|" << endl;
 			col->setXY(28, 13);
 			cout << "——————————————" << endl;
+
 		}
 		else {
 			ofstream ofs;

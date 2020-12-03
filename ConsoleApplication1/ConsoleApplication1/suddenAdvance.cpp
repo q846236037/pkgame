@@ -1,6 +1,6 @@
 #include "suddenAdvance.h"
 #include "hero.h"
-
+#include "hud.h"
 
 
 
@@ -11,7 +11,7 @@ suddenAdvance::suddenAdvance()
 	mp = 50; // mp
 	id = 2;
 	hid = 2;
-	level = 1;
+	level = 10;
 }
 
 
@@ -21,7 +21,35 @@ suddenAdvance::~suddenAdvance()
 
 void suddenAdvance::useingSkill()
 {
-
+	int num = getIsStudent(id);
+	if (num > 0)
+	{
+		if (her->mp >= mp) {
+			her->setMonster(mon);
+			her->setSkill(this);
+			her->attack();
+		}
+		else {
+			col->setXY(28, 11);
+			cout << "¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª" << endl;
+			col->setXY(28, 12);
+			cout << "|  Ê¹ÓÃÊ§°Ü,Ô­Òò£ºÀ¶Á¿²»×ã" << "  |" << endl;
+			col->setXY(28, 13);
+			cout << "¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª" << endl;
+			Sleep(1000);
+			hu->selectpkSkill();
+		}
+	}
+	else {
+		col->setXY(28, 11);
+		cout << "¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª" << endl;
+		col->setXY(28, 12);
+		cout << "|  Ê¹ÓÃÊ§°Ü,Ô­Òò£ºÎ´ÓµÓÐ¼¼ÄÜ" << "  |" << endl;
+		col->setXY(28, 13);
+		cout << "¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª" << endl;
+		Sleep(1000);
+		hu->selectpkSkill();
+	}
 }
 
 void suddenAdvance::studentSkill()

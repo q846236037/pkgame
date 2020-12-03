@@ -4,6 +4,7 @@
 #include "color.h"
 #include <fstream>
 
+class monster;
 class hud;
 class hero;
 using namespace std;
@@ -31,5 +32,8 @@ public:
 	void setcolor(color *col);
 	void sethero(hero*her);
 	int getIsStudent(int id = -1);
+	monster *mon;
+	void setmon(monster *mon);
+	void sethud(hud *hu);
 };
 

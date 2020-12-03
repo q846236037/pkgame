@@ -5,8 +5,8 @@
 soldier::soldier()
 {
 	name = "战士";
-	mp = 100; // 法力值上限
-	hp = 100;//血量上限
+	mp = 200; // 法力值上限
+	hp = 200;//血量上限
 	level = 1;//级别
 	max_level = level * 200;//升级所需经验
 	money = 0;//金钱
@@ -52,14 +52,18 @@ void soldier::attack()
 	if (mon->hp > 0)
 	{
 		//普通攻击
-		if (this->skillname != NULL) {
+		if (this->skillname == NULL) {
 			int hurt;
 			hurt = this->hurt - mon->defense;
 			mon->hp -= hurt;
-			cout << this->name << "造成了" << hurt << "点伤害" << endl;
-			cout << mon->name << "剩余" << mon->hp << "血量" << endl;
-			mon->attack();
-
+		}
+		if (this->skillname->name == "暴风雪") {
+			mp -= this->skillname->mp;
+			hurt = this->skillname->hurt - mon->defense;
+			mon->hp -= hurt;
+			mon->state = 1;
+			mon->num = 3;
+			this->skillname = NULL;
 		}
 	}
 }

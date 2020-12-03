@@ -16,5 +16,8 @@ public:
 	int money;//金钱
 	virtual void attack() = 0;
 	virtual void setPlayer(hero *her) = 0;
+	int state;//状态
+	int num;//持续几回合
+	bool isstart();
 };
 

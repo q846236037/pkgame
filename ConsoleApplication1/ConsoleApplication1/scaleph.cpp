@@ -10,8 +10,10 @@ scaleph::scaleph()
 	defense = 2;//·ÀÓù
 	hurt = 20;//ÉËº¦
 	skill *skillname = NULL;
-	level = 50;
+	level = 100;
 	money = 50;//½ðÇ®
+	state = 0;
+	num = 0;
 }
 
 
@@ -25,10 +27,7 @@ void scaleph::attack()
 		//ÆÕÍ¨¹¥»÷
 		if (skillname == NULL) {
 			int hurt = this->hurt - player->defense;
-			
 			player->hp -=hurt;
-			cout << this->name << "Ôì³ÉÁË" << hurt << "µãÉËº¦" << endl;
-			cout << player->name << "Ê£Óà" << player->hp << "ÑªÁ¿" << endl;
 		}
 	}
 }

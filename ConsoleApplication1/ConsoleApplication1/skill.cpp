@@ -1,5 +1,6 @@
 #include "skill.h"
 #include <fstream>
+#include "hero.h"
 
 
 
@@ -36,7 +37,7 @@ int skill::getIsStudent(int id)
 			if (id == -1) {
 				num++;
 			}
-			else if(sid == id){
+			else if(sid == id&&her->id ==hid){
 				num++;
 			}
 			
@@ -46,4 +47,14 @@ int skill::getIsStudent(int id)
 	else {
 		return 0;
 	}
+}
+
+void skill::setmon(monster * mon)
+{
+	this->mon = mon;
+}
+
+void skill::sethud(hud * hu)
+{
+	this->hu = hu;
 }
