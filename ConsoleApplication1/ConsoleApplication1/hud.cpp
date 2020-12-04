@@ -911,7 +911,7 @@ void hud::entershop()
 //±£¥Ê”¢–€
 void hud::saveHero()
 {
-	int len = sizeof(t_her) / sizeof(t_her[0]);
+	int len = gerHeroNumber();
 	for (int i = 0;i<len;i++)
 	{
 		if (t_her[i]->id == her->id) {
@@ -922,9 +922,9 @@ void hud::saveHero()
 	ofs.open("hero.txt", ios::out);
 	for (int i = 0; i <len; i++)
 	{
-		if(heroNum == t_her[i]->id){
+		
 			ofs << t_her[i]->name << " " << t_her[i]->mp << " " << t_her[i]->hp << " " << t_her[i]->level << " " << t_her[i]->max_level << " " << t_her[i]->money << " " << t_her[i]->hurt << " " << t_her[i]->defense << " " << t_her[i]->id << " " << t_her[i]->nowlevel << endl;
-		}
+		
 	}
 	ofs.close();
 }
@@ -1829,10 +1829,11 @@ void hud::enterselectpk()
 		Sleep(300);
 		mon2->setPlayer(her);
 		mon2->attack();
-		is_anm = 0;
-		selectPkNum();
+		
 	}
 	}
+
+	
 
 	if (mon1->num > 0 && mon2->num > 0) {
 		if (mon1->state == 1 && mon2->state == 1)
@@ -1961,6 +1962,13 @@ void hud::enterselectpk()
 		is_start = false;
 		Sleep(3000);
 		selectstart();
+	}
+
+
+	if (mon1->hp > 0 || mon2->hp > 0)
+	{
+		is_anm = 0;
+		selectPkNum();
 	}
 }
 
